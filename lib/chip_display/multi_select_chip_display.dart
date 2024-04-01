@@ -166,6 +166,7 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 10),
                   child: Icon(
                     icon!.icon,
+                    size: icon!.size,
                     color: colorator != null && colorator!(item.value) != null
                         ? colorator!(item.value)!.withOpacity(1)
                         : icon!.color ?? Theme.of(context).primaryColor,
