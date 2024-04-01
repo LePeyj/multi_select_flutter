@@ -131,31 +131,46 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         shape: shape as OutlinedBorder?,
-        avatar: icon != null
-            ? Icon(
-                icon!.icon,
-                color: colorator != null && colorator!(item.value) != null
-                    ? colorator!(item.value)!.withOpacity(1)
-                    : icon!.color ?? Theme.of(context).primaryColor,
-              )
-            : null,
+        // avatar: icon != null
+        //     ? Icon(
+        //         icon!.icon,
+        //         color: colorator != null && colorator!(item.value) != null
+        //             ? colorator!(item.value)!.withOpacity(1)
+        //             : icon!.color ?? Theme.of(context).primaryColor,
+        //       )
+        //     : null,
+        showCheckmark: false,
         label: Container(
           width: chipWidth,
-          child: Text(
-            item.label,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: colorator != null && colorator!(item.value) != null
-                  ? textStyle != null
-                      ? textStyle!.color ?? colorator!(item.value)
-                      : colorator!(item.value)
-                  : textStyle != null && textStyle!.color != null
-                      ? textStyle!.color
-                      : chipColor != null
-                          ? chipColor!.withOpacity(1)
-                          : null,
-              fontSize: textStyle != null ? textStyle!.fontSize : null,
-            ),
+          child: Row(
+            children: [
+              Text(
+                item.label,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: colorator != null && colorator!(item.value) != null
+                      ? textStyle != null
+                          ? textStyle!.color ?? colorator!(item.value)
+                          : colorator!(item.value)
+                      : textStyle != null && textStyle!.color != null
+                          ? textStyle!.color
+                          : chipColor != null
+                              ? chipColor!.withOpacity(1)
+                              : null,
+                  fontSize: textStyle != null ? textStyle!.fontSize : null,
+                ),
+              ),
+              if(icon != null)
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(
+                    icon!.icon,
+                    color: colorator != null && colorator!(item.value) != null
+                        ? colorator!(item.value)!.withOpacity(1)
+                        : icon!.color ?? Theme.of(context).primaryColor,
+                  ),
+                ),
+            ],
           ),
         ),
         selected: items!.contains(item),
