@@ -89,7 +89,7 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
     return Container(
       decoration: decoration,
       alignment: alignment ?? Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: scroll ? 0 : 10),
+      padding: EdgeInsets.only(top: 5),
       child: scroll
           ? Container(
               width: MediaQuery.of(context).size.width,
